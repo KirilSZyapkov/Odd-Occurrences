@@ -1,0 +1,21 @@
+function oddOccurrences(input) {
+    input = input.toLocaleLowerCase().split(` `);
+let listOfWords = new Map();
+   input.forEach(token=>{
+       if(!listOfWords.has(token)){
+           listOfWords.set(token, 1);
+       } else {
+           let el = listOfWords.get(token);
+           el++;
+           listOfWords.set(token, el);
+       }
+   })
+    let elements = [...listOfWords.entries()];
+   let result = [];
+   elements.forEach(token=>{
+       if(token[1]%2===1){
+           result.push(token[0]);
+       }
+   })
+console.log(result.join(` `));
+}
